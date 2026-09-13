@@ -1,21 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" width="640" height="200">
-  <!-- Emblem: Meru (still centre) within a mandala ring, bindu piercing the boundary above the peak -->
-  <g transform="translate(20,20)">
-    <circle cx="80" cy="80" r="78" fill="none" stroke="#12213A" stroke-width="2.5"/>
-    <circle cx="80" cy="80" r="66" fill="none" stroke="#B08D2B" stroke-width="1.25"/>
-
-    <!-- Meru: the still peak -->
-    <polygon points="80,24 124,134 36,134" fill="none" stroke="#12213A" stroke-width="3.4" stroke-linejoin="round"/>
-    <!-- crossbar: discipline / horizon line, sits exactly on the triangle's slanted edges -->
-    <line x1="49" y1="101" x2="111" y2="101" stroke="#12213A" stroke-width="3.4"/>
-
-    <!-- bindu: point of clarity, piercing the mandala boundary -->
-    <circle cx="80" cy="6" r="7" fill="#B08D2B"/>
-  </g>
-
-  <!-- Wordmark -->
-  <g transform="translate(200,0)">
-    <text x="0" y="95" font-family="Georgia, 'Times New Roman', serif" font-size="54" letter-spacing="3" fill="#12213A" font-weight="600">ARYA ALPHA</text>
-    <text x="0" y="140" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="10" fill="#B08D2B" font-weight="500">CAPITAL</text>
-  </g>
+  <text x="0" y="95" font-family="Georgia, 'Times New Roman', serif" font-size="54" letter-spacing="3" fill="#12213A" font-weight="600">ARYA ALPHA</text>
+  <line x1="2" y1="118" x2="345" y2="118" stroke="#B08D2B" stroke-width="1.5"/>
+  <text x="0" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="10" fill="#B08D2B" font-weight="500">CAPITAL</text>
 </svg>

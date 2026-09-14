@@ -1,8 +1,8 @@
 # Arya Alpha Capital — Website
 
 Marketing website for **Arya Alpha Capital**, a research-led investment
-advisory (Mutual Funds · PMS · Long-Only AIFs) founded by Paridhi Agrawal
-(CA, CFA Level II).
+distribution business (Mutual Funds · PMS · Long-Only AIFs) founded by
+Paridhi Agrawal (CA, CFA Level II).
 
 Static site — no build step, no framework. Content and brand palette
 (navy `#12213A` / cream `#F4EFE4` / gold `#C9A24B`) are sourced from

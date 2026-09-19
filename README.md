@@ -34,6 +34,13 @@ docker run --rm -p 8080:80 arya-alpha-site
 # then open http://localhost:8080
 ```
 
+Or with Docker Compose:
+
+```bash
+docker compose up --build
+# then open http://localhost:8080
+```
+
 ## Deploy (Dokploy)
 
 1. Push this repo to GitHub (see below).

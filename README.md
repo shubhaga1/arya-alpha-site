@@ -38,7 +38,7 @@ Or with Docker Compose:
 
 ```bash
 docker compose up --build
-# then open http://localhost:8080
+# then open http://localhost:4001
 ```
 
 ## Deploy (Dokploy)

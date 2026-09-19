@@ -65,6 +65,7 @@
     --text-body: #33415C;
     --text-muted: #6B6354;
     --text-faint: #9C9484;
+    --nav-logo-height: 48px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -120,7 +121,7 @@
     max-width: 1080px;
     margin: 0 auto;
   }
-  .nav img { height: 34px; display: block; }
+  .nav img { height: var(--nav-logo-height); display: block; }
   .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
   .nav-links a {
     color: var(--cream);

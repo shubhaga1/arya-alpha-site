@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Founder's Reset — One Woman's Story</title>
+<meta name="description" content="How a full-time corporate mom of two built a 100,000+ person following in the fifteen minutes a day everyone said she didn't have.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #fbf7f0;
+    --paper-alt: #f2ece1;
+    --accent: #b5502e;
+    --gold: #8a6a1f;
+    --muted: #79705f;
+    --line: #ddd2c0;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* Skip link — first focusable element, visible on focus */
+  .skip-link {
+    position: absolute;
+    left: 12px; top: -60px;
+    background: var(--ink); color: var(--paper);
+    padding: 10px 16px; border-radius: 6px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 600;
+    z-index: 100; transition: top 0.15s ease;
+  }
+  .skip-link:focus { top: 12px; }
+
+  a:focus-visible, .cta-btn:focus-visible, .skip-link:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .page { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.12s; }
+  .reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.24s; }
+  .reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.36s; }
+  .reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(181,80,46,0.14), transparent 45%),
+      radial-gradient(circle at 85% 82%, rgba(169,130,47,0.16), transparent 50%),
+      var(--paper);
+  }
+  .hero .kicker {
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 6.5vw, 3.6rem);
+    line-height: 1.12;
+    margin: 0 0 22px;
+    max-width: 16ch;
+  }
+  .hero .big-stat {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 8vw, 4.2rem);
+    color: var(--accent);
+    line-height: 1;
+    margin: 6px 0 8px;
+  }
+  .hero .big-stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: #6f6656;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .hero .lede {
+    font-size: 1.1rem;
+    color: #4a453e;
+    max-width: 46ch;
+    margin: 0 0 12px;
+  }
+  .hero .avatar-strip { display: flex; gap: 10px; margin-top: 34px; }
+  .hero .avatar-strip img {
+    width: 50px; height: 50px; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--paper); box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .scroll-hint { margin-top: 46px; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* Sections */
+  .section { padding: 80px 0; border-top: 1px solid var(--line); }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 14px;
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.18;
+    margin: 0 0 28px;
+    max-width: 20ch;
+  }
+  .section p { margin: 0 0 18px; font-size: 1.05rem; }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* Why section: photo + real numbers */
+  .why-proof {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 22px;
+    align-items: center;
+    background: var(--paper-alt);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+  }
+  .why-proof img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.16); }
+  .why-proof .stat-line { font-family: 'Fraunces', serif; font-size: 1.15rem; font-style: italic; margin: 0 0 8px; }
+  .why-proof .stat-sub { font-size: 0.92rem; color: #5a5344; margin: 0; }
+  .why-proof .stat-sub b { color: var(--ink); }
+  @media (max-width: 540px) { .why-proof { grid-template-columns: 1fr; } .why-proof img { max-width: 200px; margin: 0 auto; } }
+
+  /* How: milestone timeline */
+  .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 34px; }
+  .t-item {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .t-item:last-child { border-bottom: none; }
+  .t-item img { width: 88px; height: 88px; border-radius: 10px; object-fit: cover; box-shadow: 0 3px 10px rgba(0,0,0,0.14); }
+  .t-item .t-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.12rem; margin: 0 0 6px; }
+  .t-item .t-desc { font-size: 0.96rem; color: #4a453e; margin: 0 0 6px; }
+  .t-item .t-stat { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin: 0; }
+
+  /* Transformation cards */
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 30px; }
+  .card {
+    background: var(--paper-alt);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+  .card .card-num { font-family: 'Fraunces', serif; color: var(--accent); font-weight: 700; font-size: 1.3rem; margin-bottom: 8px; display: block; }
+  .card p { font-size: 0.95rem; margin: 0; color: #3a352c; }
+  @media (max-width: 540px) { .cards { grid-template-columns: 1fr; } }
+
+  /* Connect / CTA */
+  .connect {
+    padding: 90px 0 110px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .connect .eyebrow { text-align: center; }
+  .connect h2 { margin-left: auto; margin-right: auto; }
+  .cta-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 18px 42px;
+    background: var(--accent);
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    box-shadow: 0 6px 20px rgba(181,80,46,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(181,80,46,0.38); }
+  .connect .cta-note { margin-top: 16px; font-size: 0.85rem; color: var(--muted); }
+
+  footer { text-align: center; padding: 36px 0 56px; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<main id="main">
+<div class="hero">
+  <div class="kicker">A True Story</div>
+  <h1>She Had a $150K Job, Two Kids, and No Free Time — Here's How She Built 100,000 Followers Anyway</h1>
+  <div class="big-stat">107,137</div>
+  <div class="big-stat-label">real people following her journey — built in stolen 15-minute mornings</div>
+  <p class="lede">This is the true story behind <em>The Founder's Reset</em> — and why it might change how you look at the "no time" excuse.</p>
+  <div class="avatar-strip">
+    <img src="./images/01_journey_start.jpg" alt="">
+    <img src="./images/02_first_viral.jpg" alt="">
+    <img src="./images/03_first_house.jpg" alt="">
+    <img src="./images/04_pregnancy2.jpg" alt="">
+  </div>
+  <div class="scroll-hint">↓ Scroll to read her story</div>
+</div>
+
+<div class="page">
+
+  <!-- WHY -->
+  <div class="section reveal">
+    <div class="eyebrow">Why You're Reading This</div>
+    <h2>Because "I don't have time" is the excuse she had too — until she found the loophole.</h2>
+    <p>Meet the woman behind this story: a full-time corporate IT professional in Canada, earning $150,000&ndash;$200,000 a year, mother of two young kids, with a household to run and a job that doesn't stop at 5&nbsp;p.m. She wanted to build something of her own — a content channel — but every night the same four things ate her time: oversleeping past her alarm, family functions, evenings with friends, and the TV remote after the kids were asleep.</p>
+    <p>She didn't quit her job. She didn't get more hours in the day. She changed how she used <strong>fifteen minutes she was already losing every morning</strong> — and it grew into something real.</p>
+
+    <div class="why-proof">
+      <img src="./images/02_first_viral.jpg" alt="Her most viral post">
+      <div>
+        <p class="stat-line">"Have you seen this side of Canada?"</p>
+        <p class="stat-sub">One ordinary morning post, filmed in the same small window this story is about, reached <b>142,478 likes and 5,378,055 views</b> — proof that small, consistent effort can outperform any single "big" push.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW -->
+  <div class="section reveal">
+    <div class="eyebrow">What Actually Changed</div>
+    <h2>Four real moments from a four-year climb — not luck, a system</h2>
+    <p>She didn't do this overnight, and she didn't do it perfectly. Here is the real timeline, in her own milestones:</p>
+
+    <div class="timeline reveal-stagger">
+      <div class="t-item">
+        <img src="./images/01_journey_start.jpg" alt="">
+        <div>
+          <p class="t-title">The Origin Story</p>
+          <p class="t-desc">A 2018 immigration application, a COVID delay, landing in Canada in 2020 — the unglamorous years before any of this started.</p>
+          <p class="t-stat">9,957 likes · 685,490 views</p>
+        </div>
+      </div>
+      <div class="t-item">
+        <img src="./images/03_first_house.jpg" alt="">
+        <div>
+          <p class="t-title">Building a Life While Building a Following</p>
+          <p class="t-desc">Buying a first house in Canada — while family obligations were at their peak, and content time was hardest to protect.</p>
+          <p class="t-stat">7,802 likes · 218,768 views</p>
+        </div>
+      </div>
+      <div class="t-item">
+        <img src="./images/04_pregnancy2.jpg" alt="">
+        <div>
+          <p class="t-title">A Second Baby Didn't End It</p>
+          <p class="t-desc">Announcing a second child mid-build. Less free time, more distractions — the system simply absorbed the change.</p>
+          <p class="t-stat">3,672 likes · 146,321 views</p>
+        </div>
+      </div>
+      <div class="t-item">
+        <img src="./images/06_brand_deal.jpg" alt="">
+        <div>
+          <p class="t-title">The Payoff, Years Later</p>
+          <p class="t-desc">A national brand partnership — the result of years of consistent, protected, part-time effort finally being noticed.</p>
+          <p class="t-stat">50,877 likes · 2,055,293 views</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPROVEMENT -->
+  <div class="section reveal">
+    <div class="eyebrow">What You Will Take Away</div>
+    <h2>What changes for you after reading her story</h2>
+    <p>This isn't just her story — it's a system you can use, distilled into a short book called <em>The Founder's Reset</em>. Here's what it actually gives you:</p>
+    <div class="cards reveal-stagger">
+      <div class="card">
+        <span class="card-num">01</span>
+        <p>A 15-minute morning routine that works even on the days you oversleep — no perfect mornings required.</p>
+      </div>
+      <div class="card">
+        <span class="card-num">02</span>
+        <p>One clear rule for each real distraction — family functions, friends, and TV — instead of vague willpower.</p>
+      </div>
+      <div class="card">
+        <span class="card-num">03</span>
+        <p>A 20-minute weekly ritual so you never waste your limited time deciding what to create.</p>
+      </div>
+      <div class="card">
+        <span class="card-num">04</span>
+        <p>A way to build your side project without ever risking the career that pays your bills.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECT / CTA -->
+  <div class="connect reveal">
+    <div class="eyebrow">Your Next Step</div>
+    <h2>Wake up at 5 a.m. tomorrow. Invest 15 minutes. Read the full story and system.</h2>
+    <p>The complete book — her full story, the exact system, and a 30-day plan to start your own streak — is one click away.</p>
+    <a class="cta-btn" href="./book.html">Read The Founder's Reset →</a>
+    <p class="cta-note">Free to read. No sign-up required.</p>
+  </div>
+
+</div>
+
+</main>
+
+<footer>THE FOUNDER'S RESET</footer>
+
+<script>
+  var els = document.querySelectorAll('.reveal, .reveal-stagger');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in-view'); });
+  }
+</script>
+
+</body>
+</html>

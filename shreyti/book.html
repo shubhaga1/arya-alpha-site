@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Founder's Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #fbf7f0;
+    --paper-alt: #f2ece1;
+    --accent: #b5502e;
+    --accent-soft: #e8d9c8;
+    --gold: #a9822f;
+    --line: #ddd2c0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(181,80,46,0.14), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(169,130,47,0.16), transparent 50%),
+      var(--paper);
+    padding: 60px 24px;
+    position: relative;
+  }
+
+  .cover .kicker {
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+
+  .cover h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    max-width: 12ch;
+  }
+
+  .cover .subtitle {
+    font-size: 1.2rem;
+    color: #4a453e;
+    max-width: 44ch;
+    margin: 0 0 40px;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  .cover .author {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #79706193;
+    color: #7c7264;
+  }
+
+  .cover .avatar-strip {
+    display: flex;
+    gap: 10px;
+    margin-top: 48px;
+  }
+  .cover .avatar-strip img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--paper);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .cover .avatar-caption {
+    font-size: 0.75rem;
+    color: #8a8071;
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Intro / front matter ---------- */
+  .intro {
+    padding: 96px 0 64px;
+  }
+  .intro p {
+    font-size: 1.08rem;
+  }
+  .intro p:first-of-type::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 3.6rem;
+    font-weight: 700;
+    float: left;
+    line-height: 0.8;
+    padding: 8px 10px 0 0;
+    color: var(--accent);
+  }
+
+  .promise-box {
+    background: var(--paper-alt);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    padding: 28px 30px;
+    margin: 40px 0;
+  }
+  .promise-box h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    margin: 0 0 14px;
+    color: var(--accent);
+  }
+  .promise-box ul { margin: 0; padding-left: 20px; }
+  .promise-box li { margin-bottom: 9px; }
+
+  .signal-line {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #55503f;
+    margin: 56px 0;
+    padding: 0 20px;
+  }
+
+  /* ---------- Chapters ---------- */
+  .chapter {
+    padding: 90px 0 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .chapter-eyebrow {
+    font-size: 12.5px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .chapter h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    margin: 0 0 44px;
+    max-width: 22ch;
+  }
+
+  .chapter h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin: 46px 0 16px;
+    color: #2c2822;
+  }
+
+  .chapter p { margin: 0 0 20px; }
+  .chapter ol, .chapter ul { padding-left: 22px; }
+  .chapter li { margin-bottom: 14px; }
+  .chapter strong { color: var(--accent); font-weight: 600; }
+
+  /* ---------- Journey callout (merged proof-point) ---------- */
+  .journey {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    align-items: center;
+    background: linear-gradient(135deg, var(--paper-alt), #eee3d1);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 36px 0;
+  }
+  .journey img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .journey .journey-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .journey .journey-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: #2c2822;
+    margin: 0 0 10px;
+    line-height: 1.5;
+  }
+  .journey .journey-stat {
+    font-size: 0.92rem;
+    color: #5a5344;
+  }
+  .journey .journey-stat b { color: var(--ink); }
+
+  @media (max-width: 560px) {
+    .journey { grid-template-columns: 1fr; }
+    .journey img { max-width: 220px; margin: 0 auto; }
+  }
+
+  /* ---------- 5am / invest callouts ---------- */
+  .wake-call {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 30px 32px;
+    margin: 44px 0;
+  }
+  .wake-call .wake-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e0b98a;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .wake-call p {
+    margin: 0;
+    color: #f1ece2;
+    font-size: 1.02rem;
+  }
+  .wake-call p:last-child { margin: 0; }
+  .wake-call strong { color: #f2b880; }
+
+  /* ---------- Table of contents ---------- */
+  .toc { padding: 90px 0 40px; }
+  .toc h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    margin-bottom: 36px;
+  }
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .toc-item .toc-num {
+    font-family: 'Fraunces', serif;
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 28px;
+  }
+  .toc-item .toc-title { flex: 1; font-weight: 500; }
+  .toc-item .toc-hint { color: #948a79; font-size: 0.85rem; font-style: italic; }
+
+  /* ---------- Closing ---------- */
+  .closing {
+    padding: 90px 0 120px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .closing h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .closing .final-strip {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+  }
+  .closing .final-strip img {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--paper);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+  }
+  .closing .sticky-note {
+    display: inline-block;
+    background: #f6e9a8;
+    color: #3a3220;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    padding: 22px 30px;
+    border-radius: 2px;
+    transform: rotate(-1.2deg);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    margin: 20px 0;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 60px;
+    color: #a89c86;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kicker">The Founder's Reset</div>
+  <h1>Wake Up at 5&nbsp;A.M. and Invest in the Person Building Your Second Life</h1>
+  <p class="subtitle">A time-and-distraction system for the corporate mom building a channel in the hours everyone said she didn't have</p>
+  <p class="author">Founder Mom Press</p>
+  <div class="avatar-strip">
+    <img src="images/01_journey_start.jpg" alt="Journey milestone">
+    <img src="images/03_first_house.jpg" alt="First house milestone">
+    <img src="images/04_pregnancy2.jpg" alt="Family milestone">
+    <img src="images/08_family_trip.jpg" alt="Family trip milestone">
+  </div>
+  <p class="avatar-caption">Real milestones from a real 5 a.m. builder — the proof this works is woven through every chapter</p>
+</div>
+
+<div class="page">
+
+  <div class="intro">
+    <p>You are not failing because you lack discipline. You have a demanding corporate IT career pulling in a strong six-figure income, two kids under ten, a household to run, and a YouTube channel you keep trying to build in whatever is left over — which, most weeks, is nothing. You've tried waking up early and the snooze button won. You've tried "just being more consistent," and a cousin's engagement party, a Friday night with friends you hadn't seen in months, and a Netflix episode that turned into four all quietly ate the week instead.</p>
+
+    <p>This book is not another productivity system built for someone with fewer obligations than you. It's built specifically for a woman balancing a $150K&ndash;$200K corporate career, a young family, and a real ambition to build something of her own on camera — and it assumes the four things that keep eating your creator time will keep showing up, because they're not going away: they're the actual shape of your life. Waking up later than planned. Family functions. Time with friends. The pull of the couch and the remote at the end of a long day. The goal was never to eliminate these. It's to stop letting them quietly eliminate the one thing you're trying to build for yourself.</p>
+
+    <div class="wake-call">
+      <div class="wake-label">Why 5 A.M.</div>
+      <p>Every real proof-point in this book comes from one account: a Canada-based immigrant mom of two, full corporate life, <strong>107,000+ followers built almost entirely inside hours most people write off as "no time left."</strong> Her single most-watched post — 5.4 million views — was filmed in the same kind of stolen morning minutes this book asks of you. The 5 a.m. window isn't about hustle-culture bragging rights. It's the one block of the day your job, your kids, and your calendar haven't claimed yet. <strong>Investing fifteen minutes of it in the thing you're building is the entire system.</strong></p>
+    </div>
+
+    <p>Here's what's inside:</p>
+    <div class="promise-box">
+      <h3>What you'll walk away with</h3>
+      <ul>
+        <li>Why "just wake up earlier" and "just be more disciplined" were never going to work for your specific life, and what actually will</li>
+        <li>A 15-minute founder wake-up that survives a late start instead of requiring a perfect one</li>
+        <li>A named system for each of your four real distractions — family functions, friend time, TV, and oversleeping — instead of vague willpower</li>
+        <li>A weekly content sprint ritual that fits around a full-time corporate job, not instead of it</li>
+        <li>How to protect your career while you build the channel, so a bad quarter at work never becomes the reason you quit YouTube</li>
+        <li>A 30-day plan that turns "I keep almost starting" into your first real posting streak — with real milestones from a real builder as proof it holds up over years, not just weeks</li>
+      </ul>
+    </div>
+
+    <p class="signal-line">Read it once straight through. Then treat Chapter 3 as the one you return to every time a specific distraction knocks you off course — because it will, repeatedly, and that's normal, not a sign you're not cut out for this.</p>
+  </div>
+
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <a class="toc-item" href="#ch1"><span class="toc-num">01</span><span class="toc-title">Why You Keep Losing the Time You Swore You'd Use</span><span class="toc-hint">the willpower trap</span></a>
+    <a class="toc-item" href="#ch2"><span class="toc-num">02</span><span class="toc-title">The 15-Minute Founder Wake-Up</span><span class="toc-hint">the 5 a.m. system</span></a>
+    <a class="toc-item" href="#ch3"><span class="toc-num">03</span><span class="toc-title">The Distraction Ledger — Family, Friends, and TV</span><span class="toc-hint">a rule for each one</span></a>
+    <a class="toc-item" href="#ch4"><span class="toc-num">04</span><span class="toc-title">The Weekly Content Sprint Ritual</span><span class="toc-hint">20 minutes, once a week</span></a>
+    <a class="toc-item" href="#ch5"><span class="toc-num">05</span><span class="toc-title">Protecting Your Corporate Career While You Build</span><span class="toc-hint">the compartment rule</span></a>
+    <a class="toc-item" href="#ch6"><span class="toc-num">06</span><span class="toc-title">Your 30-Day Sprint to a Real Posting Streak</span><span class="toc-hint">layer it in, week by week</span></a>
+  </div>
+
+  <!-- ===================== CHAPTER 1 ===================== -->
+  <div class="chapter" id="ch1">
+    <div class="chapter-eyebrow">Chapter One</div>
+    <h2>Why You Keep Losing the Time You Swore You'd Use</h2>
+
+    <p>Every Sunday night you probably tell yourself this is the week. You'll film that video, post consistently, finally treat the channel like a real second thing instead of a someday thing. By Thursday, it's evaporated again — not because you're lazy, but because nobody ever taught you that "I'll find the time" is a plan that has never once worked for anybody.</p>
+
+    <h3>The Real Reason Willpower Keeps Losing</h3>
+    <p>You are not choosing Netflix over your channel, or your cousin's baby shower over filming, in some deliberate moment of laziness. You're choosing it because by 8 p.m., after a full corporate workday and an evening of dinner, homework, and bedtime, your brain has one setting left: the path of least resistance. Willpower is a finite resource that gets spent down over the course of a demanding day, and by the time you'd need it to start filming, there's none left in the tank. This isn't a character flaw. It's basic cognitive fatigue, and it happens to every high-performing person carrying this much at once.</p>
+    <p>The fix isn't "have more willpower." It's never relying on willpower being available at 8 p.m. in the first place — building your content time into a slot in the day where your tank isn't already empty, and removing the decision entirely so there's nothing left to talk yourself out of.</p>
+
+    <h3>Your Job Is Not the Enemy, and Neither Is Your Family</h3>
+    <p>It's tempting to frame this as "corporate job vs. channel" or "family time vs. channel," as if one has to lose. That framing is exactly why so many ambitious moms burn out trying to build a second thing — because it turns every hour with your kids or every family function into something you should feel guilty about, and guilt is not a sustainable fuel source. Your six-figure job is what gives you the financial runway to build something risky and creative without needing it to pay the bills immediately. Your family life is not competing with your channel; it's the actual reason you want to build something you're proud of.</p>
+
+    <div class="journey">
+      <img src="images/01_journey_start.jpg" alt="Our journey from India to Canada">
+      <div>
+        <div class="journey-label">Real Journey &middot; 2023</div>
+        <p class="journey-quote">"Our journey from India to Canada" — a 2018 PR application, a COVID delay, landing in 2020, a first house, two kids.</p>
+        <p class="journey-stat">This single origin-story post pulled <b>9,957 likes and 685K views</b> — proof that the "boring" real story, the one that actually took years of unglamorous grinding through a full-time career and a young family, is exactly what a real audience connects with. Not the highlight reel. The years in between.</p>
+      </div>
+    </div>
+
+    <p>The real conflict isn't your job or your family — it's the unprotected, undefended hours in between, where good intentions quietly lose to whatever's easiest in the moment.</p>
+
+    <h3>The One Shift This Book Is Built On</h3>
+    <p>Here it is: <strong>you don't need more time — you need a small number of specific, defended hours, and a specific job for each one.</strong></p>
+    <p>Right now, your content-creation time is a vague, undefended idea ("I'll do it when I get a chance"), while your four distractions — waking up late, family functions, friends, TV — are specific, scheduled, and socially reinforced. An undefended vague intention will lose to a specific scheduled thing every single time. Everything in this book exists to convert your content time from a vague hope into something as specific and defended as a work meeting, without asking you to disappear from your family or your job to do it.</p>
+  </div>
+
+  <!-- ===================== CHAPTER 2 ===================== -->
+  <div class="chapter" id="ch2">
+    <div class="chapter-eyebrow">Chapter Two</div>
+    <h2>The 15-Minute Founder Wake-Up</h2>
+
+    <p>Oversleeping isn't really about the alarm clock. It's about your brain, at 6 a.m., doing a cost-benefit calculation between fifteen more minutes of sleep and an ambiguous "get up and work on the channel" — and sleep wins because the channel side of that equation isn't concrete enough to compete.</p>
+
+    <h3>Why "Wake Up Earlier" Advice Fails You Specifically</h3>
+    <p>Generic advice says wake up at 5 a.m. and win the day. That advice assumes you're deciding, in a groggy half-asleep state, to get up and do something undefined and effortful. Your brain will choose sleep almost every time under those conditions — not because you lack discipline, but because vague effort loses to concrete comfort in a fatigued decision-making state. The fix isn't waking up earlier. It's making the thing you'd get up for so small and so specific that it barely counts as a decision at all.</p>
+
+    <div class="wake-call">
+      <div class="wake-label">The Invest Principle</div>
+      <p>Waking at 5 a.m. isn't the win. <strong>What you invest those fifteen minutes into is the win.</strong> One idea, written down while it's still dark outside, compounds the same way a 5.4-million-view post compounded: not from one lucky morning, but from a specific small deposit made on an ordinary one, repeated for years before anyone outside your following noticed.</p>
+    </div>
+
+    <h3>The 3-Step Founder Wake-Up</h3>
+    <p>This is designed to survive the mornings you oversleep anyway — which will still happen, and that's fine:</p>
+    <ol>
+      <li><strong>The night before, pick one 15-minute task and write it on a sticky note on your phone charger.</strong> Not "work on the channel" — something like "write 3 title options for the video" or "film the 60-second intro only." Specific enough that there's no decision left to make when you're groggy.</li>
+      <li><strong>When you wake up — even late — do that one task before checking email or Slack.</strong> Fifteen minutes, timer on, phone on airplane mode. This is the single highest-leverage habit in this entire book: protecting the first content-related task from being crowded out by the workday before it even starts.</li>
+      <li><strong>Stop at fifteen minutes, no matter what.</strong> Finishing the task isn't the goal — starting it, every single day, is. A half-finished title list still counts as a win, because the goal is keeping the streak of "I touched the channel today" alive, not producing a finished product every morning.</li>
+    </ol>
+
+    <h3>What to Do on the Mornings You Oversleep Badly</h3>
+    <p>Some mornings you'll wake up with twelve minutes before you need to be logged into a work call. On those mornings, do not skip the wake-up entirely — that's how the whole system quietly dies over a few bad weeks. Do a 90-second version instead: open your notes app and voice-type one sentence of an idea, a hook, or a video title. Ninety seconds. That's the floor under the floor. It sounds too small to matter, and that's exactly why it works — it's small enough to survive your worst mornings, and a system that only works on your best mornings isn't a system.</p>
+
+    <div class="journey">
+      <img src="images/02_first_viral.jpg" alt="First viral break">
+      <div>
+        <div class="journey-label">Real Win &middot; 2022</div>
+        <p class="journey-quote">"Have you seen this side of Canada?" — a small, almost throwaway joke about potholes.</p>
+        <p class="journey-stat">It became the single most-viewed post of the entire account: <b>142,478 likes, 5,378,055 views</b>. No campaign, no paid boost — just one ordinary post made in the same kind of small, unglamorous window this chapter is asking you to protect. You cannot predict which fifteen-minute deposit compounds. You can only make sure you keep making them.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CHAPTER 3 ===================== -->
+  <div class="chapter" id="ch3">
+    <div class="chapter-eyebrow">Chapter Three</div>
+    <h2>The Distraction Ledger — Family Functions, Friends, and TV</h2>
+
+    <p>These three aren't obstacles to eliminate. They're permanent, recurring features of a full life, and trying to will them away is why past attempts at consistency collapsed. Each one needs its own specific rule, not a generic "be more focused" mantra.</p>
+
+    <h3>Family Functions: The Selective Attendance Rule</h3>
+    <p>In a culture where family gatherings are frequent and attendance is often treated as non-negotiable, saying yes to every function quietly consumes entire weekends, month after month. The rule that works without creating family conflict: <strong>you attend fully, or you attend on a fixed exit time, decided before you arrive — never decided in the moment.</strong> Before any family function, decide out loud to your partner: "We're staying until 8, then heading home." Committing to the exit time before you walk in the door removes the guilt-driven negotiation that happens once you're already there, three hours in, and being asked to stay "just a little longer."</p>
+    <p>For functions that aren't close family — extended cousins, acquaintance gatherings — apply a stricter filter: <strong>would missing this genuinely damage a relationship that matters to me, or am I attending out of habit and obligation?</strong> Not every invitation requires your Saturday. Protecting one weekend day a month for content, guilt-free, requires actually saying no to some of these, and that's allowed.</p>
+
+    <div class="journey">
+      <img src="images/03_first_house.jpg" alt="Our first house in Canada">
+      <div>
+        <div class="journey-label">Real Milestone &middot; 2022</div>
+        <p class="journey-quote">"Our first house in Canada" — announced the same season family and settling-in obligations were at their peak.</p>
+        <p class="journey-stat"><b>7,802 likes, 218,768 views.</b> The milestones that matter most to your family — a house, a move, a kid — are not competing with your content. Documented honestly, they often become your most resonant posts, because your audience is living the same juggle you are.</p>
+      </div>
+    </div>
+
+    <h3>Friends: Batch It, Don't Sprinkle It</h3>
+    <p>Frequent one-off coffee catch-ups and dinners with friends, scattered across the week, are what quietly consume your would-be content evenings one at a time — each individually easy to justify, collectively devastating to any weekly rhythm. The fix isn't seeing friends less. It's consolidating: pick one evening a week (or every other week) as your standing social slot, and protect the other weeknights as content-defended by default. When someone suggests a Tuesday dinner and Tuesday isn't your slot, the honest answer that preserves the friendship is simple: "I've got a standing thing on Tuesdays — does Thursday work instead?" People respect a specific competing plan far more than a vague "I'm busy," because a specific plan doesn't feel like a brush-off.</p>
+
+    <h3>TV and the End-of-Day Scroll: Raise the Friction</h3>
+    <p>By the time the kids are asleep, the TV remote and your phone are the two lowest-friction options in the house — which is exactly why they win. You don't beat low-friction distractions with willpower; you beat them by making your content time equally low-friction and making the distraction slightly harder to fall into by accident. Two concrete moves: keep your filming setup (ring light, phone tripod, script notes) already assembled in a visible spot rather than packed away, so starting requires zero setup — and put the TV remote in a drawer instead of on the coffee table, so turning it on requires a conscious choice instead of a reflex. Small, but the data on habit formation is consistent: friction differences this small reliably change which option wins at the end of an exhausted day.</p>
+
+    <div class="journey">
+      <img src="images/04_pregnancy2.jpg" alt="Second pregnancy announcement">
+      <div>
+        <div class="journey-label">Real Milestone &middot; 2023</div>
+        <p class="journey-quote">"We were waiting for the right time & here we announce it" — a second-child announcement, posted mid-build of the channel.</p>
+        <p class="journey-stat"><b>3,672 likes, 146,321 views.</b> A second baby did not end the channel. It changed the ledger — fewer evenings, more family functions, less social bandwidth — and the system simply absorbed it, because the system was never built assuming an easy, distraction-free life in the first place.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CHAPTER 4 ===================== -->
+  <div class="chapter" id="ch4">
+    <div class="chapter-eyebrow">Chapter Four</div>
+    <h2>The Weekly Content Sprint Ritual</h2>
+
+    <p>You don't have time to "figure out what to post" every single day. You need one weekly ritual that turns a scattered list of maybe-someday ideas into a specific, already-decided plan for the week — done once, on autopilot, not re-decided daily.</p>
+
+    <h3>Sunday, 20 Minutes: The Content Sprint Planning Session</h3>
+    <p>Same time every Sunday, four steps:</p>
+    <ol>
+      <li><strong>Pick exactly one format for the week, five minutes.</strong> Based on what's realistically achievable this week — a talking-head tip video, a quick list post, a day-in-the-life clip — not five different ideas you'll never get to all.</li>
+      <li><strong>Write three possible titles or hooks, five minutes.</strong> You are not writing the full script yet. You're removing the blank-page problem before it costs you a weeknight.</li>
+      <li><strong>Slot your filming and editing into two specific existing time blocks, five minutes.</strong> Not "sometime this week" — a specific morning wake-up slot (Chapter 2) for filming, and a specific evening (protected via Chapter 3's rules) for editing.</li>
+      <li><strong>Lay out anything physical you'll need, five minutes.</strong> Outfit picked, ring light charged, script printed or pulled up. Removing setup friction for future-you is worth more than any amount of motivation in the moment.</li>
+    </ol>
+
+    <h3>What Actually Performs: Don't Waste Your Protected Time on Filler</h3>
+    <p>Because your content time is scarce and hard-won, it matters enormously what you spend it on. A useful case study: this same Canada-based parenting and lifestyle account, over 100,000 followers, five years of posts reviewed in full — a clear pattern held up consistently: practical, "save this for later" tip content (packing lists, money-saving tips, meal-prep routines) reliably outperformed generic trending-audio meme content by two to three times the engagement, even though the meme format is easier and faster to produce.</p>
+
+    <div class="journey">
+      <img src="images/05_evergreen_hack.jpg" alt="Practical tip content example">
+      <div>
+        <div class="journey-label">Real Pattern &middot; Repeated 2022&ndash;2023</div>
+        <p class="journey-quote">"Every new immigrant coming from India is curious about this, so were we. Hope this helps."</p>
+        <p class="journey-stat">A single practical hack, reposted from an earlier viral original, still pulled <b>37,285 likes and 1,892,492 views</b> a year later. Evergreen, useful, "save this" content keeps earning long after a trend-chasing post is forgotten — the exact format this chapter tells you to default to.</p>
+      </div>
+    </div>
+
+    <p>The lesson for you: with limited weekly content time, default to the practical-tip format over generic trends — it's not just easier to plan (Chapter 4, step 2 becomes trivial once you're mining your own IT/corporate-career expertise for tips), it's also the format most likely to actually work.</p>
+
+    <h3>Protecting the Ritual Itself From the Same Distractions</h3>
+    <p>The Sunday planning session is just as vulnerable to family functions and social plans as any other slot — protect it the same way: tell your partner or family in advance that Sunday evenings, 7:00&ndash;7:20, is your planning time, the same way you'd protect a recurring work meeting. A ritual that isn't itself defended will get skipped the first busy Sunday, and a skipped planning session is usually what causes an entire week to quietly fall apart.</p>
+  </div>
+
+  <!-- ===================== CHAPTER 5 ===================== -->
+  <div class="chapter" id="ch5">
+    <div class="chapter-eyebrow">Chapter Five</div>
+    <h2>Protecting Your Corporate Career While You Build</h2>
+
+    <p>You are not in a position to treat the channel like it's your job yet, and pretending otherwise is how ambitious people quietly sabotage the stable income that's funding their runway to build it in the first place. This chapter is about the boundary that keeps both alive.</p>
+
+    <h3>The Compartment Rule</h3>
+    <p>Content work happens only in the specific windows you've defended — the morning wake-up slot, the weekly sprint evening — and never bleeds into work hours, no matter how tempting it is to sneak in an edit during a slow afternoon. This isn't about ethics alone; it's strategic. The moment your employer or your own performance at work shows signs of your attention being split, you put the actual financial foundation of this whole project at risk. A dip in your corporate performance is a far bigger threat to your channel's long-term survival than one missed week of posting.</p>
+
+    <h3>Using Your Corporate Expertise as Content Leverage</h3>
+    <p>Here's the advantage almost nobody in the generic "family lifestyle" content space has: years of real corporate IT experience most creators in your niche don't have. Career advice, workplace navigation as an immigrant professional, practical tech-industry tips — this is genuinely differentiated content you can create faster than almost anyone else, because you're not researching it, you're recalling it. Lean into content where your day job is the unfair advantage, not the obstacle — it collapses your research time to near zero and gives you an angle most parenting/lifestyle accounts in your space simply can't compete with.</p>
+
+    <div class="journey">
+      <img src="images/06_brand_deal.jpg" alt="Brand partnership milestone">
+      <div>
+        <div class="journey-label">Real Win &middot; 2024</div>
+        <p class="journey-quote">A sponsored partnership with a national bank's student GIC program for newcomers — years after the account started as a side project around a full-time job.</p>
+        <p class="journey-stat"><b>50,877 likes, 2,055,293 views.</b> The brand deals didn't arrive by quitting the corporate job to "go all in." They arrived because years of consistent, protected, part-time effort built an audience large and trusted enough that brands came looking. The compartment rule isn't a constraint on ambition — it's what made the ambition survive long enough to pay off.</p>
+      </div>
+    </div>
+
+    <h3>What to Do When Work Gets Genuinely Overwhelming</h3>
+    <p>Some weeks — a product launch, a performance review cycle, a reorg — will legitimately consume everything. On those weeks, don't try to force the full system. Drop to the absolute floor: the 90-second morning voice memo from Chapter 2, nothing else, for as many days as the crunch lasts. The goal during a work crunch isn't progress, it's survival of the habit itself — keeping the thread alive so it's a five-minute restart afterward, not a from-scratch relaunch.</p>
+  </div>
+
+  <!-- ===================== CHAPTER 6 ===================== -->
+  <div class="chapter" id="ch6">
+    <div class="chapter-eyebrow">Chapter Six</div>
+    <h2>Your 30-Day Sprint to a Real Posting Streak</h2>
+
+    <p>You don't need to run all four systems from day one. Layer them exactly in this order, giving each one a week to become automatic before adding the next.</p>
+
+    <h3>Week-by-Week Build</h3>
+    <ul>
+      <li><strong>Week 1 — Morning wake-up only (Chapter 2).</strong> Just the 15-minute (or 90-second) founder wake-up. Nothing else changes. Let this become automatic first.</li>
+      <li><strong>Week 2 — Add the Distraction Ledger (Chapter 3).</strong> Apply the family-function exit-time rule and the friend-batching rule to whatever social events land on your calendar this week specifically.</li>
+      <li><strong>Week 3 — Add the Sunday Sprint ritual (Chapter 4).</strong> Run your first full 20-minute planning session and produce your first fully planned week of content.</li>
+      <li><strong>Week 4 — Add the Compartment Rule (Chapter 5).</strong> Formalize the boundary between work hours and content hours, and identify your first piece of content built from your corporate expertise specifically.</li>
+    </ul>
+
+    <h3>When You Fall Off (You Will, and It's Fine)</h3>
+    <p>A launch at work, a big family event, a sick kid — something will knock this over during the 30 days, probably more than once. When it happens, restart in the exact order you built it: morning wake-up first, then the Distraction Ledger, then the Sunday sprint, then the Compartment Rule. Do not try to resurrect all four simultaneously — that's the same all-or-nothing trap that caused every previous attempt to collapse. Rebuilding in layers, one at a time, is both faster and dramatically less demoralizing than trying to relaunch the whole thing at once.</p>
+
+    <div class="journey">
+      <img src="images/07_invisible_work.jpg" alt="The invisible work of motherhood">
+      <div>
+        <div class="journey-label">Real Reflection &middot; 2026, four years in</div>
+        <p class="journey-quote">"Nobody sees the work that keeps a home running." — posted after years of building, still folding the same laundry.</p>
+        <p class="journey-stat">This is not a highlight-reel post — 61 likes, a fraction of the viral ones above. It's here on purpose: <b>the system was never about every post going viral.</b> It's about a woman who kept showing up in fifteen-minute windows for years, through a first house, two kids, a full-time career, and every ordinary Tuesday in between where nothing went viral at all.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <h2>Your Next Step</h2>
+    <p>Before today ends, do exactly one thing: write tomorrow's 15-minute task on a sticky note and put it on your phone charger.</p>
+    <div class="sticky-note">"Write 3 title options for the video."</div>
+    <p>That's the entire first step. Every other system in this book is waiting for whenever you're ready to layer it in — but the whole sprint starts with one sticky note, tomorrow morning, at 5 a.m., and nothing more than that.</p>
+
+    <div class="final-strip">
+      <img src="images/01_journey_start.jpg" alt="">
+      <img src="images/02_first_viral.jpg" alt="">
+      <img src="images/03_first_house.jpg" alt="">
+      <img src="images/04_pregnancy2.jpg" alt="">
+      <img src="images/06_brand_deal.jpg" alt="">
+      <img src="images/08_family_trip.jpg" alt="">
+    </div>
+    <p style="font-size:0.85rem; color:#8a8071;">Every image in this book is a real, public milestone — not a stock photo of a "someday." The years between them are exactly what fifteen protected minutes a day, compounded, actually looks like.</p>
+  </div>
+
+</div>
+
+<footer>THE FOUNDER'S RESET &middot; Founder Mom Press</footer>
+
+</body>
+</html>
